@@ -7,30 +7,25 @@ import ResetKB from "../pages/admin/ResetKB"
 import { isAuthenticated } from "../services/auth"
 
 function ProtectedRoute({ children }) {
-  return isAuthenticated() ? children : <Navigate to="/admin/login" replace />
+  return isAuthenticated() ? children : <Navigate to="login" replace />
 }
 
 export default function AdminRoutes() {
-
   return (
     <Routes>
-      <Route path="/login" element={<AdminLogin />} />
+      <Route path="login" element={<AdminLogin />} />
+
       <Route
-        path="/*"
+        path="*"
         element={
           <ProtectedRoute>
-            <div className="flex">
-              <div className="flex-1">
-                <Routes>
-                  <Route path="/dashboard" element={<AdminDashboard />} />
-                  <Route path="/upload" element={<UploadDocument />} />
-                  <Route path="/documents" element={<DocumentList />} />
-                  <Route path="/reset" element={<ResetKB />} />
-                  <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
-                  
-                </Routes>
-              </div>
-            </div>
+            <Routes>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="upload" element={<UploadDocument />} />
+              <Route path="documents" element={<DocumentList />} />
+              <Route path="reset" element={<ResetKB />} />
+              <Route path="*" element={<Navigate to="dashboard" replace />} />
+            </Routes>
           </ProtectedRoute>
         }
       />
