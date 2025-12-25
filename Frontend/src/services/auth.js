@@ -2,15 +2,15 @@ import apiClient from "./api"
 
 export const login = async (username, password) => {
   try {
-    const response = await apiClient.post("/auth/login", {
+    const res = await apiClient.post("/auth/login", {
       username,
       password,
     })
-    const token = response.data.token
+    const token = res.data.token
     localStorage.setItem("authToken", token)
     return { success: true, token }
   } catch (error) {
-    return { success: false, error: error.response?.data?.error || "Login gagal" }
+    return { success: false, error: error.res?.data?.error || "Login gagal" }
   }
 }
 
