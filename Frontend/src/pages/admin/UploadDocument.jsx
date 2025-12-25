@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Upload, AlertCircle, CheckCircle } from "lucide-react"
 import AdminNavbar from "../../components/AdminNavbar"
-import { uploadDocument } from "../../services/documents"
+import { uploadDocument } from "../../services/api"
 
 export default function UploadDocument() {
   const [file, setFile] = useState(null)

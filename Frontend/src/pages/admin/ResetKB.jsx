@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AlertCircle, RotateCcw } from "lucide-react";
 import AdminNavbar from "../../components/AdminNavbar";
-import { resetKnowledgeBase } from "../../services/documents";
+import { resetKnowledgeBase } from "../../services/api";
 
 export default function ResetKB() {
   const [loading, setLoading] = useState(false);

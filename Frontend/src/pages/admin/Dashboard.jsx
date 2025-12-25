@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { FileText, UploadCloud, Activity, RefreshCw  } from "lucide-react"
 import AdminNavbar from "../../components/AdminNavbar"
 import StatsCard from "../../components/StatsCard"
-import { getDocuments } from "../../services/documents"
+import { fetchDocuments } from "../../services/api"
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   }, [])
 
   const loadStats = async () => {
-    const result = await getDocuments()
+    const result = await fetchDocuments()
     if (result.success) {
       const docs = result.data || []
       const uniqueCategories = new Set(docs.map((d) => d.category)).size
